@@ -177,7 +177,6 @@ setup(
         'xlrd>=2.0.1',
         'xlsxwriter>=1.3.8',
         'xmltodict>=0.12.0',
-        'nvtx>=0.2.8',
     ],
     extras_require=(
         lambda x: {
@@ -216,7 +215,7 @@ setup(
                 'onnx>=1.10.2',
                 'onnxruntime-gpu==1.10.0',
             ],
-            'nvidia': ['py3nvml>=0.2.6'],
+            'nvidia': ['py3nvml>=0.2.6', 'nvtx>=0.2.8'],
         }
     ),
     include_package_data=True,
