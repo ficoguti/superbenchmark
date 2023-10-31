@@ -478,7 +478,7 @@ class SuperBenchRunner():
         rc = self._ansible_client.run(
             ansible_runner_config, cancel_callback=lambda: None, sudo=(not self._docker_config.skip)
         )
-        nvxt.end_range(rng)
+        nvtx.end_range(rng)
 
         return rc
 
