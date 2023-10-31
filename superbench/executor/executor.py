@@ -6,7 +6,6 @@
 import os
 import json
 from pathlib import Path
-import nvtx
 
 from omegaconf import ListConfig
 
@@ -242,10 +241,7 @@ class SuperBenchExecutor():
                             framework=Framework(framework.lower()),
                             parameters=self.__get_arguments(benchmark_config.parameters)
                         )
-                        # nvtx marker for nsys profile
-                        rng = nvtx.start_range(message="BENCHMARK", color="green")
                         result = self.__exec_benchmark(full_name, context)
-                        nvtx.end_range(rng)
                         benchmark_results.append(result)
                 else:
                     full_name = benchmark_name
@@ -256,10 +252,7 @@ class SuperBenchExecutor():
                         framework=Framework(framework.lower()),
                         parameters=self.__get_arguments(benchmark_config.parameters)
                     )
-                    # nvtx marker for nsys profile
-                    rng = nvtx.start_range(message="BENCHMARK", color="green")
                     result = self.__exec_benchmark(full_name, context)
-                    nvtx.end_range(rng)
                     benchmark_results.append(result)
 
             if monitor:
