@@ -12,8 +12,6 @@ from pathlib import Path
 from pprint import pformat
 from collections import defaultdict
 
-import nvtx
-
 import jsonlines
 from natsort import natsorted
 from joblib import Parallel, delayed
@@ -471,15 +469,10 @@ class SuperBenchRunner():
         if isinstance(timeout, int):
             # we do not expect timeout in ansible unless subprocess hangs
             ansible_runner_config['timeout'] = timeout + 60
-
-        # nvtx marker for nsys profile
-        rng = nvtx.start_range(message="BENCHMARK", color="green")
         # overwrite ansible runner's default signal handler with main process's
         rc = self._ansible_client.run(
             ansible_runner_config, cancel_callback=lambda: None, sudo=(not self._docker_config.skip)
         )
-        nvtx.end_range(rng)
-
         return rc
 
     def run(self):
