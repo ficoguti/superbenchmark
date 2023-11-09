@@ -18,7 +18,7 @@ all: cuda rocm
 cuda: common cuda_cutlass cuda_bandwidthTest cuda_nccl_tests cuda_perftest gpcnet cuda_gpuburn
 rocm: common rocm_perftest rocm_rccl_tests rocm_rocblas rocm_bandwidthTest
 cpu: common cpu_perftest
-common: cpu_hpl cpu_stream fio
+common: cpu_stream fio
 directx_amd: directx_amf_encoding_latency
 
 # Create $(SB_MICRO_PATH)/bin and $(SB_MICRO_PATH)/lib, no error if existing, make parent directories as needed.
@@ -125,7 +125,7 @@ ifneq (,$(wildcard gpu-burn/Makefile))
 	cp -v ./gpu-burn/compare.ptx $(SB_MICRO_PATH)/bin/
 endif
 
-# Build HPL from main branch 
+# Build HPL from main branch
 cpu_hpl: sb_micro_path
 ifneq (,$(wildcard hpl-tests/Makefile))
 	cd ./hpl-tests && \
@@ -141,7 +141,7 @@ ifneq (,$(wildcard hpl-tests/Makefile))
 	cp -v ./hpl-tests/template_hpl.dat $(SB_MICRO_PATH)/bin/
 endif
 
-# Build STREAM 
+# Build STREAM
 cpu_stream: sb_micro_path
 ifneq (,$(wildcard stream-tests/Makefile))
 	cd ./stream-tests && \

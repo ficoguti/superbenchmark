@@ -213,7 +213,7 @@ setup(
             ],
             'ort': [
                 'onnx>=1.10.2',
-                'onnxruntime-gpu==1.10.0',
+                'onnxruntime-gpu>=1.10.0',
             ],
             'nvidia': ['py3nvml>=0.2.6', 'nvtx>=0.2.8'],
         }
